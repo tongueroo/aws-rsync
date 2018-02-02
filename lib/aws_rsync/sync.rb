@@ -45,7 +45,9 @@ module AwsRsync
 
     # destination folder
     def folder
-      @options[:folder] || File.basename(Dir.pwd)
+      src = get_src
+      src = src == '.' ? Dir.pwd : src
+      @options[:folder] || File.basename(src)
     end
 
     def get_excludes(file)
