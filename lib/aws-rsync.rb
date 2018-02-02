@@ -9,4 +9,5 @@ module AwsRsync
   autoload :AwsServices, "aws_rsync/aws_services"
   autoload :Sync, "aws_rsync/sync"
   autoload :Host, "aws_rsync/host"
+  autoload :Watch, "aws_rsync/watch"
 end

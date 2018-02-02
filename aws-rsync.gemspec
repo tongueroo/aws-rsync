@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = AwsRsync::VERSION
   spec.authors       = ["Tung Nguyen"]
   spec.email         = ["tongueroo@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{Tool rsyncs local files to AWS EC2 instance for a faster development flow}
+  spec.summary       = %q{Tool rsyncs local files to AWS EC2 instance for a faster development flow}
+  spec.homepage      = "https://github.com/tongueroo/aws-rsync"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "thor"
   spec.add_dependency "hashie"
   spec.add_dependency "colorize"
+  spec.add_dependency "filewatcher"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "byebug"
