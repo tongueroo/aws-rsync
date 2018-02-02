@@ -1,0 +1,3 @@
+Examples:
+
+$ aws-rsync hello
