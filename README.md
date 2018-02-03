@@ -6,10 +6,10 @@ This tool is useful for working with single EC2 instances.  It takes the instanc
 
 Some convenient things the tool does:.
 
+* watches your files for changes and automatically re-syncs.
+* allows you to use a local text editor of your preference and have your changes reflected on the server pretty quickly.
 * rsync default options are provided.
 * The rsync exclude option is derived from the `.gitignore` and `.dockerignore` files in the local folding being sync.
-* watches your files for changes and automatically re-syncs.
-* allows you to use a local text editor of your preference.
 
 ## Usage
 
