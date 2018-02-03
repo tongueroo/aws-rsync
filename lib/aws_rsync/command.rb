@@ -31,6 +31,14 @@ module AwsRsync
           args -= help_flags
           args.insert(-2, "help")
         end
+
+        #   aws_rsync --version
+        #   aws_rsync -v
+        version_flags = ["-v", "--version"]
+        if args.length == 1 && !(args & version_flags).empty?
+          args = ["version"]
+        end
+
         super
       end
     end

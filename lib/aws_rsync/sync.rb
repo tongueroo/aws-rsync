@@ -6,8 +6,13 @@ module AwsRsync
 
     def run
       puts "=> #{command}".colorize(:green)
-      system(command)
-      raise "rsync execution returned failure" if ($?.exitstatus != 0)
+      return if @options[:noop]
+      success = system(command)
+      unless success
+        puts "ERROR: rsync command failed".colorize(:red)
+        exit 1
+      end
+      note_time
     end
 
     def command
@@ -25,7 +30,6 @@ module AwsRsync
       options = "--delete --numeric-ids --safe-links -axzSv #{exclude}"
       src = get_src
       dest = "#{user}@#{host.ip}:#{folder}"
-      # dest = "rsync://#{host.ip}:#{port}/volume/"
 
       "rsync #{options} #{src} #{dest}"
     end
@@ -60,5 +64,8 @@ module AwsRsync
       result
     end
 
+    def note_time
+      puts "Last synced at: #{Time.now}".colorize(:green)
+    end
   end
 end
