@@ -6,9 +6,9 @@ This tool is useful for working with single EC2 instances.  It takes the instanc
 
 Some convenient things the tool does:.
 
-* watches your files for changes and automatically re-syncs.
-* allows you to use a local text editor of your preference and have your changes reflected on the server pretty quickly.
-* rsync default options are provided.
+* Allows you to use a local text editor of your preference and have your changes reflected on the server pretty quickly.
+* Watches your files for changes and automatically re-syncs.
+* Some useful rsync default options are pre-configured.
 * The rsync exclude option is derived from the `.gitignore` and `.dockerignore` files in the local folding being sync.
 
 ## Usage
@@ -68,6 +68,19 @@ You can override the rsync command with 2 environment variables:
 
 * AWS\_RSYNC_OPTIONS: Override the rsync main options used.
 * AWS\_RSYNC_EXCLUDE: Override the rsync exclude options used.
+
+The pre-configured rsync options are listed here for convenience. For the most up to date pre-configured options, reference the source code here [sync.rb](lib/aws_rsync/sync.rb).
+
+```sh
+  --numeric-ids               don't map uid/gid values by user/group name
+  --safe-links                ignore symlinks that point outside the tree
+  -a, --archive               recursion and preserve almost everything (-rlptgoD)
+  -x, --one-file-system       don't cross filesystem boundaries
+  -z, --compress              compress file data during the transfer
+  -S, --sparse                handle sparse files efficiently
+  -v, --verbose               verbose
+      --delete                delete extraneous files from destination dirs
+```
 
 ## Installation
 
