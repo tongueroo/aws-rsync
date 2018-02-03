@@ -1,4 +1,4 @@
-# AwsRsync
+# Aws Rsync
 
 Rsync local files to an AWS EC2 instance for a faster development flow.
 
