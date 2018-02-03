@@ -18,7 +18,7 @@ aws-rsync sync INSTANCE_ID # one time rsync call
 aws-rsync sync INSTANCE_ID --watch # auto re-sync
 ```
 
-For example, say you are in a demo-rails folder, and you run the command in the folder.  It will sync that demo-rails folder to the home folder of the EC2 instance.
+For example, say you are in a [demo-rails](https://github.com/tongueroo/demo-rails) folder, and you run the command in the folder.  It will sync that demo-rails folder to the home folder of the EC2 instance.
 
 ```sh
 $ git clone https://github.com/tongueroo/demo-rails
