@@ -5,3 +5,6 @@ This project *tries* to adhere to [Semantic Versioning](http://semver.org/), eve
 
 ## [0.1.0]
 - Initial release.
+- initial aws-rsync sync command
+- watch mode working
+- AWS_RSYNC_EXCLUDE AWS_RSYNC_OPTIONS override abilities
