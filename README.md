@@ -16,22 +16,56 @@ Some convenient things the tool does:.
 aws-rsync sync INSTANCE_ID
 ```
 
-Examples:
+For example, say you are in a demo-rails folder, and you run the command in the folder.  It will sync that demo-rails folder to the home folder of the EC2 instance.
+
+```sh
+$ git clone https://github.com/tongueroo/demo-rails
+$ cd demo-rails
+$ aws-rsync sync i-123456789
+=> rsync --delete --numeric-ids --safe-links -axzSv --exclude='.git' --exclude='tmp' --exclude='log' --exclude='/.bundle' --exclude='/log/*' --exclude='/tmp/*' --exclude='!/log/.keep' --exclude='!/tmp/.keep' --exclude='/node_modules' --exclude='/yarn-error.log' --exclude='.byebug_history' --exclude='config/database.yml' ./ ec2-user@11.22.33.44:demo-rails
+building file list ... done
+
+sent 2742 bytes  received 20 bytes  1841.33 bytes/sec
+total size is 38976  speedup is 14.11
+Last synced at: 2018-02-02 17:07:00 -0800
+```
+
+Let's verify that the files are on the server now:
+
+```
+$ ssh ec2-user@11.22.33.44 'ls'
+demo-rails
+$ ssh ec2-user@11.22.33.44 'ls demo-rails | head -3'
+app
+bin
+config
+$
+```
+
+### Watch folder and automatically re-sync
+
+Running the command with the `--watch` flag will sync once and then monitor the local directory for any file changes. When changes are detected, it'll automatically call sync again.
+
+This allows you to use any local editor you prefer and have your changes reflect on the server quickly.
+
+### More Examples
 
 ```sh
 aws-rsync sync i-123456789
 aws-rsync sync i-123456789 --watch
 aws-rsync sync i-123456789 --private-ip
 aws-rsync sync i-123456789 --private-ip --watch
+aws-rsync sync i-123456789 --user ec2-user
 aws-rsync sync i-123456789 --noop
+aws-rsync sync -h # more help
 ```
 
 ## Overriding the rsync command
 
 You can override the rsync command that gets used with 2 environment variables:
 
-* AWS_RSYNC_OPTIONS: Override the rsync main options used.
-* AWS_RSYNC_EXCLUDE: Override the rsync exclude options used.
+* AWS\_RSYNC_OPTIONS: Override the rsync main options used.
+* AWS\_RSYNC_EXCLUDE: Override the rsync exclude options used.
 
 ## Installation
 
