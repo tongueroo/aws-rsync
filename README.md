@@ -8,8 +8,8 @@ Some convenient things the tool does:.
 
 * Allows you to use a local text editor of your preference and have your changes reflected on the server pretty quickly.
 * Watches your files for changes and automatically re-syncs.
-* Some useful rsync default options are pre-configured. These can be overriden if desired.
-* The rsync exclude option is derived from your `.gitignore` and `.dockerignore` files. These can be overriden if desired.
+* Some useful rsync default options are pre-configured. These can be overridden if desired.
+* The rsync exclude option is derived from your `.gitignore` and `.dockerignore` files. These can be overridden if desired.
 
 ## Usage
 
