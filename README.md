@@ -2,18 +2,20 @@
 
 Rsync local files to an AWS EC2 instance for a faster development flow.
 
-This tool is useful for working with single EC2 instances.  It takes the instance's id as the main argument and uses it to look up the instance's IP address. It then rsyncs your local project folder to a folder on the specified EC2 instance.
+This tool is useful for working with single EC2 instances.  It takes the instance's id as the main argument and uses it to look up the instance's IP address. It then rsyncs your local project folder to the EC2 instance.
 
 Some convenient things the tool does:.
 
 * rsync default options are provided.
 * The rsync exclude option is derived from the `.gitignore` and `.dockerignore` files in the local folding being sync.
-
+* watches your files for changes and automatically re-syncs.
+* allows you to use a local text editor of your preference.
 
 ## Usage
 
 ```sh
-aws-rsync sync INSTANCE_ID
+aws-rsync sync INSTANCE_ID # one time rsync call
+aws-rsync sync INSTANCE_ID --watch # auto re-sync
 ```
 
 For example, say you are in a demo-rails folder, and you run the command in the folder.  It will sync that demo-rails folder to the home folder of the EC2 instance.
@@ -46,7 +48,7 @@ $
 
 Running the command with the `--watch` flag will sync once and then monitor the local directory for any file changes. When changes are detected, it'll automatically call sync again.
 
-This allows you to use any local editor you prefer and have your changes reflect on the server quickly.
+This allows you to use any local editor you prefer and have your changes reflect on the server pretty quickly.
 
 ### More Examples
 
@@ -62,7 +64,7 @@ aws-rsync sync -h # more help
 
 ## Overriding the rsync command
 
-You can override the rsync command that gets used with 2 environment variables:
+You can override the rsync command with 2 environment variables:
 
 * AWS\_RSYNC_OPTIONS: Override the rsync main options used.
 * AWS\_RSYNC_EXCLUDE: Override the rsync exclude options used.
